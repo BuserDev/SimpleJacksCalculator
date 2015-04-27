@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Calculator</title>
+    <style>
+        button {width:75px}
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Simple Jack's Calculator</h1>
+        <h4>By Trevor Uyeda, Robert Buser, and Mateo Sarica</h4>
+        <img src="simplejack.jpg" alt="Simple Jack">
+        <p id="subtitle">Simple Jack loves math! Put in an equation and Jack will guess the answer.</p>
+        <h2 id="answer"></h2>
+        <br>
+        <form name="Calculator">
+            <table border="2">
+                <tr>
+                    <td>
+                        <input type="text" name="InputField" id="InputField" size="48" maxlength="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="input('7')">7</button>
+                        <button type="button" onclick="input('8')">8</button>
+                        <button type="button" onclick="input('9')">9</button>
+                        <button type="button" onclick="input('/')">/</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="input('4')">4</button>
+                        <button type="button" onclick="input('5')">5</button>
+                        <button type="button" onclick="input('6')">6</button>
+                        <button type="button" onclick="input('*')">*</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="input('1')">1</button>
+                        <button type="button" onclick="input('2')">2</button>
+                        <button type="button" onclick="input('3')">3</button>
+                        <button type="button" onclick="input('-')">-</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="input('.')">.</button>
+                        <button type="button" onclick="input('0')">0</button>
+                        <button type="button" onclick="calculate()">=</button>
+                        <button type="button" onclick="input('+')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" style="width:310px" onclick="Calculator.InputField.value = ''">Clear</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+
+    <script>
+        function input(character) {
+            Calculator.InputField.value += character;
+        }
+        function calculate() {
+            Calculator.InputField.value = eval(Calculator.InputField.value);
+            var randomNum = Math.floor((Math.random() * 10) + 1);
+            document.getElementById("subtitle").innerHTML = "Jack guesses the number " +randomNum;
+            
+            if(Calculator.InputField.value == randomNum) {
+                document.getElementById("answer").innerHTML = "Jack was right! \"You m-m-m-mmm-m-make me happy!\"";
+            }
+            else {
+                document.getElementById("answer").innerHTML = "Jack was wrong. :( \"This equation makes my eyes rain!\"";
+            }
+        }
+    </script>
+</body>
+
+</html>
